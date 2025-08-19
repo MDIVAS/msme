@@ -53,8 +53,8 @@ const LocationMap: React.FC = () => {
           style={{ height: '300px', borderRadius: '12px' }}
         >
           <TileLayer
-            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            attribution='&copy; <a href="https://www.openstreetmap.org/?#map=14/20.23804/85.84515">OpenStreetMap</a> contributors'
+            url="https://www.openstreetmap.org/?#map=14/20.23804/85.84515"
           />
           <Marker position={position}>
             <Popup>
@@ -98,10 +98,10 @@ const LocationMap: React.FC = () => {
 
       <div className="mt-4 p-3 bg-gradient-to-r from-blue-900/20 to-purple-900/20 rounded-lg border border-blue-400/20">
         <p className="text-sm text-gray-300">
-          <strong className="text-cyber-blue">Zone:</strong> Mumbai Coastal Region - High Risk Area
+          <strong className="text-cyber-blue">Zone:</strong> Madanpur , Bhubaneswar 
         </p>
         <p className="text-xs text-gray-400 mt-1">
-          Elevation: 14m • Terrain: Coastal Plains • Weather: Tropical
+          Elevation: 14m • Terrain: Plain • Weather: Tropical
         </p>
       </div>
     </motion.div>
