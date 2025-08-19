@@ -53,8 +53,8 @@ const LocationMap: React.FC = () => {
           style={{ height: '300px', borderRadius: '12px' }}
         >
           <TileLayer
-            attribution='&copy; <a href="https://www.openstreetmap.org/?#map=14/20.23804/85.84515">OpenStreetMap</a> contributors'
-            url="https://www.openstreetmap.org/?#map=14/20.23804/85.84515"
+            attribution='&copy; <a href="https://www.openstreetmap.org/?mlat=20.2454939&mlon=85.7266459#map=15/20.2454939/85.7266459">OpenStreetMap</a> contributors'
+            url="https://www.openstreetmap.org/?mlat=20.2454939&mlon=85.7266459#map=15/20.2454939/85.7266459"
           />
           <Marker position={position}>
             <Popup>
