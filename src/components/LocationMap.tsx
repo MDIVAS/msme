@@ -1,33 +1,36 @@
-import React, { useEffect, useState } from 'react'
-import { MapContainer, TileLayer, Marker, Popup, Circle } from 'react-leaflet'
-import { motion } from 'framer-motion'
-import { MapPin, Navigation, Radar } from 'lucide-react'
-import L from 'leaflet'
+import React, { useEffect, useState } from 'react';
+import { MapContainer, TileLayer, Marker, Popup, Circle } from 'react-leaflet';
+import { motion } from 'framer-motion';
+import { MapPin, Navigation, Radar } from 'lucide-react';
+import L from 'leaflet';
 
 // Fix for default marker icons
-delete (L.Icon.Default.prototype as any)._getIconUrl
+delete (L.Icon.Default.prototype as any)._getIconUrl;
 L.Icon.Default.mergeOptions({
   iconRetinaUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon-2x.png',
   iconUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon.png',
   shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png',
-})
+});
 
 const LocationMap: React.FC = () => {
-  const [position, setPosition] = useState<[number, number]>([19.0760, 72.8777]) // Mumbai, India (coastal)
-  const [accuracy, setAccuracy] = useState(50)
+  // Latitude and Longitude for Madanpur, Bhubaneswar
+  const MADANPUR_COORDS: [number, number] = [20.2106, 85.7483];
+
+  const [position, setPosition] = useState<[number, number]>(MADANPUR_COORDS);
+  const [accuracy, setAccuracy] = useState(50);
 
   useEffect(() => {
-    // Simulate GPS updates
+    // Simulate GPS updates around the Madanpur location
     const interval = setInterval(() => {
       setPosition([
-        19.0760 + (Math.random() - 0.5) * 0.01,
-        72.8777 + (Math.random() - 0.5) * 0.01
-      ])
-      setAccuracy(30 + Math.random() * 70)
-    }, 5000)
+        MADANPUR_COORDS[0] + (Math.random() - 0.5) * 0.01,
+        MADANPUR_COORDS[1] + (Math.random() - 0.5) * 0.01,
+      ]);
+      setAccuracy(30 + Math.random() * 70);
+    }, 5000);
 
-    return () => clearInterval(interval)
-  }, [])
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <motion.div
@@ -84,7 +87,7 @@ const LocationMap: React.FC = () => {
             {position[0].toFixed(6)}, {position[1].toFixed(6)}
           </div>
         </div>
-        
+
         <div className="glass-card p-3">
           <div className="flex items-center space-x-2">
             <div className="status-indicator bg-green-500"></div>
@@ -98,14 +101,14 @@ const LocationMap: React.FC = () => {
 
       <div className="mt-4 p-3 bg-gradient-to-r from-blue-900/20 to-purple-900/20 rounded-lg border border-blue-400/20">
         <p className="text-sm text-gray-300">
-          <strong className="text-cyber-blue">Zone:</strong> Madanpur , Bhubaneswar 
+          <strong className="text-cyber-blue">Zone:</strong> Madanpur, Bhubaneswar, Odisha, India
         </p>
         <p className="text-xs text-gray-400 mt-1">
           Elevation: 14m • Terrain: Plain • Weather: Tropical
         </p>
       </div>
     </motion.div>
-  )
-}
+  );
+};
 
-export default LocationMap
+export default LocationMap;
